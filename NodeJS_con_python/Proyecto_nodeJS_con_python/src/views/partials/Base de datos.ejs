@@ -1,0 +1,146 @@
+<form class="row g-3" name="formulario_BD" method="post" action="">
+
+    <div class="row">
+
+    </div>
+
+    <div class="row">
+
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-1 d-flex justify-content-left">
+
+        </div>
+
+
+
+        <div class="col-sm-1 d-flex justify-content-left">
+
+        </div>
+
+        <div class="col-sm-2 d-flex justify-content-left">
+            <button type="button" class="btn btn-secondary btn_add" onclick="Carga_datos();">Cargar datos</button>
+        </div>
+
+        <div class="col-sm-3 ">
+            <p>
+                <input type="text" class="form-control anchuralabelinputgraf1" id="numero_data_mostrar"
+                    name="numero_data_mostrar" placeholder="Numero de datos a mostrar">
+            </p>
+        </div>
+        </row>
+    </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <br>
+</form>
+
+<form class="row g-3" name="formulario_BD" method="post" action="actualizartabla">
+    <div class="row">
+
+        <div class="col-sm-3 ">
+
+        </div>
+
+        <div class="col-sm-3 ">
+            <p>
+                <button type="submit" class="btn btn-secondary btn_add">Actualizar pagina</button>
+                <!--Este boton ejecuta una función usando nodejs, esta función se encuetra en el archivo actualizardata.js-->
+            </p>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-2 d-flex justify-content-left">
+        </div>  
+        <div class="col-sm-8 d-flex justify-content-left">
+            <p> Al oprimir el boton "carga de datos" se llevará la info de un CSV a la base de datos del aplicativo.
+                Este proceso utiliza python y carga según la cantidad deseada por el usuario los registros a la base de datos no relacional.
+                Al oprimir el boton actualizar pagina, se lee la base de datos Nosql, se obtiene la información y posteriormente la envia a la pagina
+                en formato de tablar. El proceso de leer y enviar los datos a la pagina se realiza con Nodejs
+            </p>
+        </div>
+    </div>
+</form>
+
+<div class="row">
+
+</div>
+<hr class="rounded">
+
+<div class="row">
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-10">
+
+        <table>
+            <tr>
+                <th>
+                    <ptable>
+                        Sexo
+                    </ptable>
+                </th>
+                <th>
+                    <ptable>
+                        Longitud
+                    </ptable>
+                </th>
+                <th>
+                    <ptable>Diametro</ptable>
+                </th>
+                <th>
+                    <ptable>Alturao</ptable>
+                </th>
+                <th>
+                    <ptable>Peso entero</ptable>
+                </th>
+                <th>
+                    <ptable>Peso de la cascara</ptable>
+                </th>
+                <th>
+                    <ptable>Peso de las visceras</ptable>
+                </th>
+                <th>
+                    <ptable>Peso del caparazón</ptable>
+                </th>
+                <th>
+                    <ptable>N. de anillos</ptable>
+                </th>
+            </tr>
+            <% for (i=0; i<temp.length; i++) { %>
+                <tr>
+                    <th>
+                        <%= temp[i].Sexo%>
+                    </th>
+
+                    <th>
+                        <%= temp[i].Longitud%>
+                    </th>
+                    <th>
+                        <%= temp[i].Diametro%>
+                    </th>
+                    <th>
+                        <%=temp[i].Altura%>
+                    </th>
+                    <th>
+                        <%=temp[i].Peso_entero%>
+                    </th>
+                    <th>
+                        <%=temp[i].Peso_cascara%>
+                    </th>
+                    <th>
+                        <%=temp[i].Peso_visceras%>
+                    </th>
+                    <th>
+                        <%=temp[i].Peso_caparazon%>
+                    </th>
+                    <th>
+                        <%=temp[i].anillos%>
+                    </th>
+                </tr>
+                <% } %>
+        </table>
+    </div>
+</div>

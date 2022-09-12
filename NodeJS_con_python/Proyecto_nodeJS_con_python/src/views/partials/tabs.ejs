@@ -1,0 +1,19 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class='nav-link <%- (tabs === 0) ? "active" : "" %>' id="BD-tab" data-bs-toggle="tab" data-bs-target="#BD"
+            type="button" role="tab" aria-controls="BD" aria-selected="true">Base de datos</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class='nav-link <%- (tabs === 1) ? "active" : "" %>' id="Graficas-tab" data-bs-toggle="tab" data-bs-target="#Graficas"
+            type="button" role="tab" aria-controls="Gráficas" aria-selected="false">Graficas</button>
+    </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+    <div class='<%- (tabs=== 0) ? "tab-pane fade show active" : "tab-pane fade show " %>' id="BD" role="tabpanel" aria-labelledby="BD-tab">
+        <%- include('Base de datos'); %>
+    </div>
+    <div class='<%- (tabs=== 1) ? "tab-pane fade show active" : "tab-pane fade show " %>' id="Graficas"  role="tabpanel" aria-labelledby="Graficas-tab">
+        <%- include('Gráficas'); %>
+    </div>
+</div>

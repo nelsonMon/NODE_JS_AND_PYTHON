@@ -1,0 +1,232 @@
+<!-- Acá se encontrará el código necesario para realizar la vista de la pestaña de gráficas.-->
+<!-- Se puede resaltar que contiene basicamente selectores, cajas de entradas y un boton dentro 
+    de, el cual llamará la función de javascript que se ejecutará en gran parte en el lado del servidor
+    utilizando nodejs-->
+
+<hr class="rounded">
+
+<div class="row">
+
+
+    <div class="col-sm-1 d-flex justify-content-center">
+    </div>
+
+    <div class="col-sm-6 d-flex justify-content-center">
+        <p1> En esta sección se puede observar tres tipos de gráficos estadísticos obtenidos con variables aleatorios.
+            Para visualizarlos tienen que seleccionar un metódo generador de números aleatorios.
+            Posteriormente deben seleccionar una clase de generador de variables. Si desean trabajar con Mux muller la opción del generador de transformada inversa tiene que estar en generador y en caso contrario si desean usar el de transformada inversa. 
+        </p1>
+    </div>
+</div>
+
+<hr class="rounded">
+
+<form class="row g-3" name="formulario_simulacion" method="post" action="/Calculo_Modulo_simulacion">
+
+    <div class="row">
+
+
+        <div class="col-sm-1 d-flex justify-content-center">
+        </div>
+
+        <div class="col-sm-6 d-flex justify-content-center">
+            <label for="fname_gna">Generación de números aletorios</label>
+        </div>
+    </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="row">
+        <div class="col-sm-3 d-flex justify-content-center">
+            <label for="fname_gna" class="parrafolabel">
+                Tipo de generador:
+            </label>
+        </div>
+        <!--Selector del metodo de generación de números aleatorios-->
+        <div class="col-sm-5 d-flex justify-content-center">
+            <select class="form-select" name="AlgoritmoGN" aria-label="Default select example" id="AlgoritmoGN">
+                <option selected>Algoritmo</option>
+                <option value_GVA="1">ALGORITMO SIMULA</option>
+                <option value_GVA="2">ALGORITMO APL</option>
+                <option value_GVA="3">ALGORITMO FOLTRAN</option>
+                <option value_GVA="4">ALGORITMO DE VB</option>
+            </select>
+        </div>
+
+    </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="row">
+
+        <div class="col-sm-1 d-flex justify-content-center">
+        </div>
+        <div class="col-sm-6 d-flex justify-content-center">
+            <label for="fname_gna">
+                Generación de variables aletorios
+            </label>
+        </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="row">
+
+        <div class="col-sm-3 d-flex justify-content-center">
+            <label for="fname_gna" class="parrafolabel">
+                Tipo de generador:
+            </label>
+        </div>
+
+        <div class="col-sm-5 d-flex justify-content-center">
+
+            <div class="accordion" id="accordionFlushExample" class="accordionmodify">
+
+                <div class="accordion-item">
+
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Metódo de Box Muller
+                    </button>
+                    <!--Selector del metodo de generación de variables aleatorios usando Box Muller-->
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <select name="metodos_box_muller" class="form-select" id="class_algorit_V_ale"
+                            aria-label="Default select example">
+                            <option value_GNA='0' selected>Distribución</option>
+                            <option value_GNA="1">Distribución Normal</option>
+                            <option value_GNA="2">Distribución Log Normal</option>
+                            <option value_GNA="3">Distribución chi cuadrado</option>
+                            <option value_GNA="4">Distribución t</option>
+                            <option value_GNA="5">Distribución f</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        Metódo de Transformada inversa
+                    </button>
+                    <!--Selector del metodo de generación de variables aleatorios usando la transformada inversa-->
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                        data-bs-parent="#accordionFlushExample">
+                        <select name="metodos_inverso" class="form-select" id="class_algorit_generador_2"
+                            aria-label="Default select example">
+                            <option value_GNA="0" selected>Distribución </option>
+                            <option value_GNA="1"> Distribución Exponencial</option>
+                            <option value_GNA="2"> Distribución Weibull</option>
+                            <option value_GNA="3"> Distribución Gamma </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <!-- selector de graficos-->
+    <div class="row">
+
+
+        <div class="col-sm-1 d-flex justify-content-center">
+        </div>
+
+        <div class="col-sm-6 d-flex justify-content-center">
+            <label for="fname_gna">
+                <p>Visualizador de variables generadas</p>
+            </label>
+        </div>
+
+    </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="row">
+
+        <div class="col-sm-3 d-flex justify-content-center">
+            <label for="fname_gna" class="parrafolabel">
+                Tipo de gráfico:
+            </label>
+        </div>
+
+        <!--<div class="col-sm-1 d-flex justify-content-center">
+            </div>-->
+        <!--Selector de tipo del gráfico-->>
+        <div class="col-sm-5 d-flex justify-content-center">
+            <select name="metodo_grafico" class="form-select" id="metodo_grafico" aria-label="Default select example">
+                <option selected>Metódo</option>
+                <option value_GRA="1">Histograma</option>
+                <option value_GRA="2">Cajas y bigotes</option>
+                <option value_GRA="3">Dispersión</option>
+            </select>
+        </div>
+
+    </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <!--entrada de cantidad de numeros y variables a generar-->
+    <div class="row">
+
+
+        <div class="col-sm-1 d-flex justify-content-center">
+        </div>
+        <div class="col-sm-6 d-flex justify-content-center">
+            <label for="fname_gna">
+                Cantidad de números
+            </label>
+        </div>
+    </div>
+
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="row">
+
+        <div class="col-sm-4">
+            <label for="fname_gna">
+                <p>Cantidad de números y variables a generar:</p>
+            </label>
+        </div>
+
+        <div class="col-sm-1">
+        </div>
+
+        <div class="col-sm-2">
+            <input name="cantidad_NUSO" class="anchuralabelinput" type="text" id="cantidad_NUSO" value="0">
+        </div>
+
+    </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <!-- boton de grafica-->
+    <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-primary mb-3" onclick="graficar_variables();">GENERAR Y
+                GRAFICAR</button> 
+            <!--Este boton llama la función graficar variables la cual se encuentra en la carpeta js dentro de public-->
+        </div>
+    </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="row">
+
+        <div name='Plotly_VA' id='Plotly_VA'>
+            <!-- Acá se dibujará el gráfico estadístico -->
+        </div>
+
+    </div>
+</form>
